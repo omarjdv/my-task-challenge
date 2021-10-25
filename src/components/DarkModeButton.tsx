@@ -19,13 +19,13 @@ export default function DarkModeButton() {
 
   return (
     <div
-      className="rounded-full border w-5 h-5 cursor-pointer flex items-center justify-center "
+      className="rounded-full border w-8 h-8 cursor-pointer flex items-center justify-center"
       onClick={() => setEnabled(!enabled)}
     >
       {enabled ? (
-        <SunIcon className="w-3 h-3 text-gray-200" />
+        <SunIcon className="w-5 h-5 text-gray-200" />
       ) : (
-        <MoonIcon className="w-3 h-3 text-gray-800" />
+        <MoonIcon className="w-5 h-5 text-gray-800" />
       )}
     </div>
   );
