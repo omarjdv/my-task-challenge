@@ -27,7 +27,9 @@ function App() {
       );
       setLoading(true);
       setTasks(result.data);
-      setLoading(false);
+      setTimeout(() => {
+        setLoading(false);
+      }, 600);
     } catch (error) {
       console.log("error", error);
     }
@@ -41,7 +43,9 @@ function App() {
     <div className="min-h-screen dark:text-white">
       <Header label="My task" />
       {loading ? (
-        <Spinner />
+        <div className="min-h-screen flex items-center justify-center">
+          <Spinner />
+        </div>
       ) : (
         <>
           <TaskList tasks={tasks} openModal={openModal} />
