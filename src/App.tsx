@@ -21,15 +21,13 @@ function App() {
   };
 
   const fetchData = async () => {
+    setLoading(true);
     try {
       const result = await axios.get<TaskInterface[]>(
         "/.netlify/functions/tasks"
       );
-      setLoading(true);
       setTasks(result.data);
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
+      setLoading(false);
     } catch (error) {
       console.log("error", error);
     }

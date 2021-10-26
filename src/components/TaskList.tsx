@@ -15,7 +15,7 @@ export default function TaskList({ tasks, openModal }: TaskListProps) {
       <ul className="mt-4 grid grid-cols-1 md:grid-cols-4 gap-4 mx-4 md:mx-0">
         {tasks.map((task, index) => (
           <li
-            className="border p-4 rounded-md cursor-pointer shadow-sm dark:border-gray-800"
+            className="border p-4 rounded-md cursor-pointer shadow-sm dark:border-gray-800 last:mb-4 md:last:mb-0"
             onClick={() => openModal(index)}
             key={index}
           >
@@ -25,6 +25,9 @@ export default function TaskList({ tasks, openModal }: TaskListProps) {
             <div className="text-md text-gray-900 dark:text-gray-100">
               {task.description}
             </div>
+            {task.complete && (
+              <div className="text-md text-gray-900 dark:text-gray-100">Si</div>
+            )}
           </li>
         ))}
       </ul>
