@@ -17,6 +17,7 @@ export default function TaskList({ tasks, openModal }: TaskListProps) {
           <li
             className="border p-4 rounded-md cursor-pointer shadow-sm dark:border-gray-800"
             onClick={() => openModal(index)}
+            key={index}
           >
             <div className="text-sm text-gray-600 dark:text-gray-400">
               Task {index + 1}
