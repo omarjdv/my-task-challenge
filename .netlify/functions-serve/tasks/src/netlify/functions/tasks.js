@@ -3165,15 +3165,24 @@ var parse = import_dist.default.parse;
 
 // netlify/functions/tasks.ts
 var import_axios = __toModule(require_axios2());
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min)) + min;
+}
 var fetchData = async () => {
   try {
-    const result = await import_axios.default.get("https://lorem-faker.vercel.app/api?quantity=9");
+    const result = await import_axios.default.get(`https://lorem-faker.vercel.app/api?quantity=${getRandomInt(3, 20)}`);
     return result.data;
   } catch (error) {
     return [];
   }
 };
 var handler = async (event, context) => {
+  if (event.httpMethod === "PUT") {
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ message: "updated task" })
+    };
+  }
   const data = await fetchData();
   const tasks = data.map((task) => ({
     description: task,

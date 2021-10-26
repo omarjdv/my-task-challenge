@@ -6,6 +6,7 @@ interface ModalProps {
   closeModal: () => void;
   children: React.ReactNode;
   title: string;
+  onCompleteTask: () => Promise<void>;
 }
 
 export default function Modal({
@@ -13,6 +14,7 @@ export default function Modal({
   closeModal,
   children,
   title,
+  onCompleteTask,
 }: ModalProps) {
   return (
     <Transition appear show={isOpen} as={Fragment}>
@@ -31,7 +33,7 @@ export default function Modal({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <Dialog.Overlay className="fixed inset-0 opacity-30 " />
+            <Dialog.Overlay className="fixed inset-0 " />
           </Transition.Child>
 
           {/* This element is to trick the browser into centering the modal contents. */}
@@ -69,7 +71,7 @@ export default function Modal({
                 <button
                   type="button"
                   className="inline-flex justify-center px-4 py-2 text-sm font-medium text-blue-900 dark:text-blue-100 bg-blue-100 dark:bg-blue-900 border border-transparent rounded-md hover:bg-blue-200 dark:hover:bg-blue-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                  onClick={closeModal}
+                  onClick={onCompleteTask}
                 >
                   Complete
                 </button>
