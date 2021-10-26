@@ -66,11 +66,7 @@ function App() {
   };
 
   return (
-    <div
-      className={`min-h-screen dark:text-white flex flex-col ${
-        isOpen && "opacity-30"
-      } `}
-    >
+    <div className="min-h-screen dark:text-white flex flex-col ">
       <Header label="My task" />
       {loading ? (
         <Spinner />
